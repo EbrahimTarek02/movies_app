@@ -10,4 +10,5 @@ class AppColors{
   static const Color bottomNavBarUnSelectedItemColor = Color(0xffC6C6C6);
   static const Color divider = Color(0xff707070);
   static const Color white = Colors.white;
+  static const Color red = Colors.red;
 }
