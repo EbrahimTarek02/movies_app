@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/ui/screens/home/home_screen.dart';
+import 'package:movies_app/ui/screens/main/main_screen.dart';
 import 'package:movies_app/ui/util/app_assets.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 3),
-      () => Navigator.pushReplacementNamed(context, HomeScreen.routeName)
+      () => Navigator.pushReplacementNamed(context, MainScreen.routeName)
     );
   }
 
