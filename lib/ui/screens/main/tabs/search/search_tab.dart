@@ -62,16 +62,12 @@ class _SearchTabState extends State<SearchTab> {
                   currentWidget = Expanded(
                     child: ListView.builder(
                       itemCount: state.result.length,
-                      itemBuilder: (context, index) =>
-                          InkWell(
-                            onTap: (){
-
-                            },
-                              child: buildResultContent(state.result[index])),
+                      itemBuilder: (context, index) => InkWell(
+                          onTap: () {},
+                          child: buildResultContent(state.result[index])),
                     ),
                   );
                 } else if (state is SearchTabErrorState) {
-
                   currentWidget = errorView();
                 } else if (state is SearchTabLoadingState) {
                   currentWidget = loadingView();
@@ -116,7 +112,7 @@ class _SearchTabState extends State<SearchTab> {
     );
   }
 
-  Widget buildResultContent(Result result){
+  Widget buildResultContent(Result result) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: Column(
@@ -125,24 +121,28 @@ class _SearchTabState extends State<SearchTab> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.12,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: CachedNetworkImage(
-                          imageUrl:"https://image.tmdb.org/t/p/w500${result.backdropPath}",
-                          placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) => Image.network(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.12,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            "https://image.tmdb.org/t/p/w500${result.backdropPath}",
+                        placeholder: (context, url) =>
+                            const Center(child: CircularProgressIndicator()),
+                        errorWidget: (context, url, error) => Image.network(
                             "https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png",
-                              fit: BoxFit.cover),
-                        ),
+                            fit: BoxFit.cover),
                       ),
                     ),
                   ),
+                ),
               ),
-              const SizedBox(width: 10,),
+              const SizedBox(
+                width: 10,
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -151,12 +151,14 @@ class _SearchTabState extends State<SearchTab> {
                       "${result.title}",
                       style: const TextStyle(
                         overflow: TextOverflow.ellipsis,
-                          color: AppColors.white,
+                        color: AppColors.white,
                         fontSize: 15,
                       ),
                       maxLines: 1,
                     ),
-                    const SizedBox(height: 8,),
+                    const SizedBox(
+                      height: 8,
+                    ),
                     Text(
                       "${result.releaseDate}",
                       style: const TextStyle(
@@ -166,7 +168,9 @@ class _SearchTabState extends State<SearchTab> {
                       ),
                       maxLines: 1,
                     ),
-                    const SizedBox(height: 8,),
+                    const SizedBox(
+                      height: 8,
+                    ),
                     Text(
                       overflow: TextOverflow.ellipsis,
                       "${result.overview}",
@@ -181,7 +185,6 @@ class _SearchTabState extends State<SearchTab> {
               ),
             ],
           ),
-
           const Divider(
             thickness: 1,
             color: AppColors.divider,
