@@ -1,4 +1,4 @@
-import 'package:movies_app/data/model/popular/popular_DM.dart';
+import 'package:movies_app/data/model/movies_response/movies_response.dart';
 import 'package:movies_app/data/repos/home_tab_repo/home_tab_data_sources/home_tab_online_ds.dart';
 
 class HomeTabRepo {

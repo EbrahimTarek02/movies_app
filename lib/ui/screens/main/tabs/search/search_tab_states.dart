@@ -1,4 +1,4 @@
-import 'package:movies_app/data/model/search/results_response.dart';
+import 'package:movies_app/data/model/movies_response/movies_response.dart';
 
 abstract class SearchTabStates {}
 

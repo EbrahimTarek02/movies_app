@@ -12,14 +12,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
-    Future.delayed(
-      const Duration(seconds: 3),
-      () => Navigator.pushReplacementNamed(context, MainScreen.routeName)
-    );
+    Future.delayed(const Duration(seconds: 3),
+        () => Navigator.pushReplacementNamed(context, MainScreen.routeName));
   }
 
   @override

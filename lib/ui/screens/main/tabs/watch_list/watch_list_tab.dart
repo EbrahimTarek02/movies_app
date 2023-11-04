@@ -6,6 +6,8 @@ class WatchListTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: AppColors.bottomNavBarUnSelectedItemColor,);
+    return Container(
+      color: AppColors.bottomNavBarUnSelectedItemColor,
+    );
   }
 }

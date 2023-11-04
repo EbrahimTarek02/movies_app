@@ -5,10 +5,11 @@ class MoviesResponse {
   int? totalResults;
 
   MoviesResponse({
-      this.page, 
-      this.results, 
-      this.totalPages, 
-      this.totalResults,});
+    this.page,
+    this.results,
+    this.totalPages,
+    this.totalResults,
+  });
 
   MoviesResponse.fromJson(dynamic json) {
     page = json['page'];
@@ -32,7 +33,6 @@ class MoviesResponse {
     map['total_results'] = totalResults;
     return map;
   }
-
 }
 
 class Result {
@@ -52,20 +52,21 @@ class Result {
   int? voteCount;
 
   Result({
-      this.adult, 
-      this.backdropPath, 
-      this.genreIds, 
-      this.id, 
-      this.originalLanguage, 
-      this.originalTitle, 
-      this.overview, 
-      this.popularity, 
-      this.posterPath, 
-      this.releaseDate, 
-      this.title, 
-      this.video, 
-      this.voteAverage, 
-      this.voteCount,});
+    this.adult,
+    this.backdropPath,
+    this.genreIds,
+    this.id,
+    this.originalLanguage,
+    this.originalTitle,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.releaseDate,
+    this.title,
+    this.video,
+    this.voteAverage,
+    this.voteCount,
+  });
 
   Result.fromJson(dynamic json) {
     adult = json['adult'];
@@ -102,5 +103,4 @@ class Result {
     map['vote_count'] = voteCount;
     return map;
   }
-
 }
