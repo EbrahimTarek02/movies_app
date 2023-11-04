@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/ui/screens/states.dart';
 import 'package:movies_app/ui/screens/main/states.dart';
 
 class MainScreenViewModel extends Cubit<MainScreenStates>{

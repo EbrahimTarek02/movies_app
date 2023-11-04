@@ -4,6 +4,7 @@ import 'package:movies_app/ui/screens/main/main_screen_view_model.dart';
 import 'package:movies_app/ui/screens/main/tabs/browse/browse_tab.dart';
 import 'package:movies_app/ui/screens/main/tabs/home/home_tab.dart';
 import 'package:movies_app/ui/screens/main/tabs/search/search_tab.dart';
+import 'package:movies_app/ui/screens/states.dart';
 import 'package:movies_app/ui/screens/main/tabs/watch_list/watch_list_tab.dart';
 import 'package:movies_app/ui/screens/main/states.dart';
 import 'package:movies_app/ui/util/app_assets.dart';
@@ -13,12 +14,7 @@ class MainScreen extends StatelessWidget {
 
   static const String routeName = 'main';
   MainScreenViewModel viewModel = MainScreenViewModel();
-  List <Widget> tabs = [
-    HomeTab(),
-    SearchTab(),
-    BrowseTab(),
-    WatchListTab()
-  ];
+  List<Widget> tabs = [HomeTab(), SearchTab(), BrowseTab(), WatchListTab()];
 
   @override
   Widget build(BuildContext context) {
