@@ -9,31 +9,29 @@ class MovieImageViewer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          CachedNetworkImage(
-            imageUrl: "https://image.tmdb.org/t/p/w500$movieImageSource",
-            fit: BoxFit.cover,
-            height: double.infinity,
-            width: double.infinity,
-            errorWidget: (_, __, ___) {
-              return Image.network(
-                'https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png',
-                fit: BoxFit.cover,
-                height: double.infinity,
-                width: double.infinity,
-              );
-            },
-          ),
-          const Icon(
-            Icons.play_circle_fill,
-            size: 60.0,
-            color: AppColors.white,
-          ),
-        ],
-      ),
+    return Stack(
+      alignment: AlignmentDirectional.center,
+      children: [
+        CachedNetworkImage(
+          imageUrl: "https://image.tmdb.org/t/p/w500$movieImageSource",
+          fit: BoxFit.cover,
+          height: double.infinity,
+          width: double.infinity,
+          errorWidget: (_, __, ___) {
+            return Image.network(
+              'https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png',
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
+            );
+          },
+        ),
+        const Icon(
+          Icons.play_circle_fill,
+          size: 60.0,
+          color: AppColors.white,
+        ),
+      ],
     );
   }
 }
