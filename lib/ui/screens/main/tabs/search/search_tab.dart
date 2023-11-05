@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/data/model/movies_response/movies_response.dart';
 import 'package:movies_app/ui/screens/main/tabs/search/search_tab_states.dart';
 import 'package:movies_app/ui/screens/main/tabs/search/search_tab_view_model.dart';
+import 'package:movies_app/ui/screens/movie_details/movie_details.dart';
 import 'package:movies_app/ui/util/app_assets.dart';
 import 'package:movies_app/ui/util/app_colors.dart';
 
@@ -63,7 +64,10 @@ class _SearchTabState extends State<SearchTab> {
                     child: ListView.builder(
                       itemCount: state.result.length,
                       itemBuilder: (context, index) => InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, MovieDetails.routeName,
+                                arguments: state.result[index].id.toString());
+                          },
                           child: buildResultContent(state.result[index])),
                     ),
                   );

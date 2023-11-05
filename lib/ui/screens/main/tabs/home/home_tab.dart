@@ -2,10 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/ui/common/list_of_movies_item_view.dart';
 import 'package:movies_app/ui/common/movie_image_view.dart';
 import 'package:movies_app/ui/common/movie_poster_view.dart';
 import 'package:movies_app/ui/screens/main/tabs/home/home_tab_states.dart';
 import 'package:movies_app/ui/screens/main/tabs/home/home_tab_view_model.dart';
+import 'package:movies_app/ui/screens/movie_details/movie_details.dart';
 import 'package:movies_app/ui/util/app_colors.dart';
 
 class HomeTab extends StatefulWidget {
@@ -54,7 +56,11 @@ class _HomeTabState extends State<HomeTab> {
                         height: double.infinity),
                     items: state.moviesResponse.results!
                         .map((e) => GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, MovieDetails.routeName,
+                                    arguments: e.id.toString());
+                              },
                               child: Stack(
                                 alignment: AlignmentDirectional.bottomStart,
                                 children: [
@@ -62,8 +68,11 @@ class _HomeTabState extends State<HomeTab> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.stretch,
                                     children: [
-                                      MovieImageViewer(e.backdropPath ??
-                                          'https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png'),
+                                      Expanded(
+                                        child: MovieImageViewer(e
+                                                .backdropPath ??
+                                            'https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png'),
+                                      ),
                                       Padding(
                                         padding: EdgeInsets.only(
                                             left: MediaQuery.of(context)
@@ -215,8 +224,8 @@ class _HomeTabState extends State<HomeTab> {
                           scrollDirection: Axis.horizontal,
                           padding: const EdgeInsets.only(top: 4.0),
                           itemCount: state.moviesResponse.results!.length,
-                          itemBuilder: (context, index) =>
-                              upcomingListViewBuilder(state, index),
+                          itemBuilder: (context, index) => ListOfMoviesItemView(
+                              state.moviesResponse.results!, index),
                         ),
                       ),
                     ],
@@ -242,92 +251,14 @@ class _HomeTabState extends State<HomeTab> {
     return Padding(
       padding: const EdgeInsets.only(right: 14.0),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, MovieDetails.routeName,
+              arguments: state.moviesResponse.results![index].id.toString());
+        },
         child: MoviePosterView(
             state.moviesResponse.results![index].posterPath ??
                 'https://michaelnakache.com/wp-content/uploads/2018/08/movie-poster-coming-soon-2.png',
             true),
-      ),
-    );
-  }
-
-  Widget upcomingListViewBuilder(HomeTabSuccessState state, int index) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        width: MediaQuery.of(context).size.width * 0.25,
-        padding: const EdgeInsets.only(right: 14.0),
-        child: Card(
-          color: AppColors.primary,
-          clipBehavior: Clip.hardEdge,
-          elevation: 5,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: MoviePosterView(
-                    state.moviesResponse.results![index].posterPath ?? "",
-                    true),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.star_rate_rounded,
-                          color: AppColors.accent,
-                          size: 18,
-                        ),
-                        const SizedBox(
-                          width: 4.0,
-                        ),
-                        Text(
-                          state.moviesResponse.results![index].voteAverage
-                              .toString(),
-                          style: GoogleFonts.poppins(
-                              textStyle: const TextStyle(
-                                  fontSize: 10.0,
-                                  color: AppColors.white,
-                                  fontWeight: FontWeight.normal)),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                    Text(
-                      state.moviesResponse.results![index].title.toString(),
-                      style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              fontSize: 10.0,
-                              color: AppColors.white,
-                              fontWeight: FontWeight.normal)),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      state.moviesResponse.results![index].releaseDate
-                          .toString(),
-                      style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              fontSize: 10.0,
-                              color: AppColors.white,
-                              fontWeight: FontWeight.normal)),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

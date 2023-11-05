@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/ui/screens/category/category_screen.dart';
+import 'package:movies_app/ui/screens/category/category_screen.dart';
 import 'package:movies_app/ui/screens/main/main_screen.dart';
+import 'package:movies_app/ui/screens/movie_details/movie_details.dart';
+import 'package:movies_app/ui/screens/movie_details/movie_details.dart';
 import 'package:movies_app/ui/screens/splash/splash_screen.dart';
 
 void main() {
@@ -18,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.routeName: (_) => const SplashScreen(),
         MainScreen.routeName: (_) => MainScreen(),
+        MovieDetails.routeName: (_) => const MovieDetails(),
         CategoryScreen.routeName: (_) => const CategoryScreen(),
       },
     );

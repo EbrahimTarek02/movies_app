@@ -24,7 +24,9 @@ class MoviePosterView extends StatelessWidget {
           CachedNetworkImage(
             imageUrl: "https://image.tmdb.org/t/p/w500$posterImageSource",
             fit: BoxFit.fill,
-            height: MediaQuery.of(context).size.height * 0.2,
+            height: inListView
+                ? MediaQuery.of(context).size.height * 0.2
+                : MediaQuery.of(context).size.height * 0.25,
             width: inListView
                 ? MediaQuery.of(context).size.width * 0.25
                 : MediaQuery.of(context).size.width * 0.3,
