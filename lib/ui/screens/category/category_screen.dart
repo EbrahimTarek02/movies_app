@@ -7,6 +7,7 @@ import 'package:movies_app/data/repos/category_screen_repo/categories_screen_dat
 import 'package:movies_app/data/repos/category_screen_repo/categories_screen_repo.dart';
 import 'package:movies_app/ui/screens/category/category_screen_states.dart';
 import 'package:movies_app/ui/screens/category/category_screen_view_model.dart';
+import 'package:movies_app/ui/screens/movie_details/movie_details.dart';
 import 'package:movies_app/ui/util/app_assets.dart';
 import 'package:movies_app/ui/util/app_colors.dart';
 
@@ -64,7 +65,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
       itemCount: list.length,
       itemBuilder: (context, index) => InkWell(
           onTap: () {
-            //todo : navigate to movie details screen
+            Navigator.pushNamed(context, MovieDetails.routeName,
+                arguments: list[index].id);
           },
           child: buildResultContent(list[index])),
     );

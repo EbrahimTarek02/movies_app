@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/ui/common/list_of_movies_item_view.dart';
 import 'package:movies_app/ui/common/movie_image_view.dart';
 import 'package:movies_app/ui/common/movie_poster_view.dart';
+import 'package:movies_app/ui/screens/category/category_screen.dart';
 import 'package:movies_app/ui/screens/movie_details/movie_details_states.dart';
 import 'package:movies_app/ui/screens/movie_details/movie_details_view_model.dart';
 import 'package:movies_app/ui/util/app_colors.dart';
@@ -282,7 +283,10 @@ class _MovieDetailsState extends State<MovieDetails> {
   Widget gridViewBuilder(MovieDetailsSuccessState state, int index) {
     return InkWell(
       borderRadius: BorderRadius.circular(12.0),
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, CategoryScreen.routeName,
+            arguments: state.movieDetailsResponse.genres![index]);
+      },
       child: Container(
         decoration: BoxDecoration(
             border:
