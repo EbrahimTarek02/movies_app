@@ -9,4 +9,5 @@ class AppAssets {
   static const String splash = '${imagesPath}splash.png';
   static const String watchListIcon = '${imagesPath}watch_list_icon.png';
   static const String bookmarkAdd = '${imagesPath}bookmark_icon.png';
+  static const String browseBg = '${imagesPath}browse_bg.png';
 }
