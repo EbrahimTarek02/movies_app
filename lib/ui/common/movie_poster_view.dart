@@ -46,10 +46,13 @@ class MoviePosterView extends StatelessWidget {
                 AppAssets.bookmarkAdd,
                 color: AppColors.darkGrey,
               ),
-              const Icon(
-                Icons.add,
-                size: 20,
-                color: AppColors.white,
+              IconButton(
+                icon: Icon(
+                  Icons.add,
+                  size: 20,
+                  color: AppColors.white,
+                ),
+                onPressed: (){},
               ),
             ],
           ),
