@@ -1,23 +1,30 @@
+import 'package:movies_app/data/model/movies_response/movies_response.dart';
+
 class WatchListDM {
-  String? id;
-  String? movieId;
-  bool? isWatched;
-
   static const String collectionName = 'watched movies';
+  int? id;
+  bool? isWatched;
+  Result? result;
 
-  WatchListDM({required this.id, required this.movieId, required this.isWatched});
+  WatchListDM({
+    this.id,
+    this.isWatched,
+    this.result,
+  });
 
-  WatchListDM.fromJson(Map<String, dynamic> json) {
+  WatchListDM.fromJson(dynamic json) {
     id = json['id'];
-    movieId = json['movieId'];
     isWatched = json['isWatched'];
+    result = json['result'] != null ? Result.fromJson(json['result']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['movieId'] = movieId;
     map['isWatched'] = isWatched;
+    if (result != null) {
+      map['result'] = result?.toJson();
+    }
     return map;
   }
 }

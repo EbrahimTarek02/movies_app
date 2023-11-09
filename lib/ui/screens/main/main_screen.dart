@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
     const HomeTab(),
     const SearchTab(),
     const BrowseTab(),
-    const WatchListTab()
+    WatchListTab()
   ];
 
   MainScreen({super.key});
