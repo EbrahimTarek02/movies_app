@@ -2,7 +2,7 @@ import 'package:movies_app/data/model/movies_response/movies_response.dart';
 
 class WatchListDM {
   static const String collectionName = 'watched movies';
-  int? id;
+  String? id;
   bool? isWatched;
   Result? result;
 

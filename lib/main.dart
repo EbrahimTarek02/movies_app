@@ -9,7 +9,8 @@ import 'package:movies_app/ui/screens/splash/splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  FirebaseFirestore.instance.settings = Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
+  FirebaseFirestore.instance.settings =
+      const Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
   await FirebaseFirestore.instance.disableNetwork();
   runApp(const MyApp());
 }
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (_) => const SplashScreen(),
-        MainScreen.routeName: (_) => MainScreen(),
+        MainScreen.routeName: (_) => const MainScreen(),
         MovieDetails.routeName: (_) => const MovieDetails(),
         CategoryScreen.routeName: (_) => const CategoryScreen(),
       },

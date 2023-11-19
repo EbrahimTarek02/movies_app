@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:movies_app/data/model/watch_list_data_model/watch_list_dm.dart';
 
-class WatchListDataSource {
+class HomeScreenOfflineDS {
   Future<List<WatchListDM>> getWatchedList() async {
     List<WatchListDM> watchedList = [];
 
@@ -15,12 +15,5 @@ class WatchListDataSource {
       watchedList.add(WatchListDM.fromJson(json));
     }
     return watchedList;
-  }
-
-  void deleteMovie(String id) {
-    CollectionReference collectionReference =
-        FirebaseFirestore.instance.collection(WatchListDM.collectionName);
-
-    collectionReference.doc(id).delete();
   }
 }

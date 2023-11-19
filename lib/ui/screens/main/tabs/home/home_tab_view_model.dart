@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/data/model/movies_response/movies_response.dart';
+import 'package:movies_app/data/model/watch_list_data_model/watch_list_dm.dart';
 import 'package:movies_app/data/repos/home_tab_repo/home_tab_repo.dart';
 import 'package:movies_app/ui/screens/main/tabs/home/home_tab_states.dart';
 
@@ -13,7 +14,8 @@ class HomeTabViewModel extends Cubit<HomeTabStates> {
 
     if (popularResponse.results != null &&
         popularResponse.results?.isNotEmpty == true) {
-      emit(HomeTabSuccessState(popularResponse));
+      List<WatchListDM> list = await repo.getWatchedList();
+      emit(HomeTabSuccessState(popularResponse, list));
     } else {
       emit(HomeTabErrorState());
     }
@@ -24,7 +26,8 @@ class HomeTabViewModel extends Cubit<HomeTabStates> {
     MoviesResponse upcomingResponse = await repo.getUpcomingMovies();
 
     if (upcomingResponse.results?.isNotEmpty == true) {
-      emit(HomeTabSuccessState(upcomingResponse));
+      List<WatchListDM> list = await repo.getWatchedList();
+      emit(HomeTabSuccessState(upcomingResponse, list));
     } else {
       emit(HomeTabErrorState());
     }
@@ -35,7 +38,8 @@ class HomeTabViewModel extends Cubit<HomeTabStates> {
     MoviesResponse topRatedResponse = await repo.getTopRatedMovies();
 
     if (topRatedResponse.results?.isNotEmpty == true) {
-      emit(HomeTabSuccessState(topRatedResponse));
+      List<WatchListDM> list = await repo.getWatchedList();
+      emit(HomeTabSuccessState(topRatedResponse, list));
     } else {
       emit(HomeTabErrorState());
     }

@@ -9,17 +9,29 @@ import 'package:movies_app/ui/screens/main/tabs/watch_list/watch_list_tab.dart';
 import 'package:movies_app/ui/util/app_assets.dart';
 import 'package:movies_app/ui/util/app_colors.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   static const String routeName = 'main';
+
+  const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
   final MainScreenViewModel viewModel = MainScreenViewModel();
+
   final List<Widget> tabs = [
     const HomeTab(),
     const SearchTab(),
     const BrowseTab(),
-    WatchListTab()
+    const WatchListTab()
   ];
 
-  MainScreen({super.key});
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

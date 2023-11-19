@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/data/model/watch_list_data_model/watch_list_dm.dart';
 import 'package:movies_app/data/repos/watch_list_repo/watch_list_repo.dart';
 import 'package:movies_app/ui/screens/main/tabs/watch_list/watch_list_states.dart';
-import 'package:movies_app/ui/screens/main/tabs/watch_list/watch_list_tab.dart';
 
 class WatchListTabViewModel extends Cubit {
   WatchListRepo watchListRepo;
@@ -18,5 +17,12 @@ class WatchListTabViewModel extends Cubit {
     } else {
       emit(WatchListTabErrorState("Empty"));
     }
+  }
+
+  void deleteMovie(String id) async {
+    emit(WatchListTabLoadingState());
+    watchListRepo.deleteMovie(id);
+    List<WatchListDM> list = await watchListRepo.getWatchedList();
+    emit(WatchListTabISuccessState(list));
   }
 }

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/data/model/movie_details_args/movies_details_args.dart';
 import 'package:movies_app/data/model/movies_response/movies_response.dart';
 import 'package:movies_app/ui/screens/main/tabs/search/search_tab_states.dart';
 import 'package:movies_app/ui/screens/main/tabs/search/search_tab_view_model.dart';
@@ -66,7 +67,9 @@ class _SearchTabState extends State<SearchTab> {
                       itemBuilder: (context, index) => InkWell(
                           onTap: () {
                             Navigator.pushNamed(context, MovieDetails.routeName,
-                                arguments: state.result[index].id.toString());
+                                arguments: MovieDetailsArgs(
+                                    state.result[index].id.toString(),
+                                    state.watchedMoviesList));
                           },
                           child: buildResultContent(state.result[index])),
                     ),

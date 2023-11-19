@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/data/model/browse_response/browse_response.dart';
+import 'package:movies_app/data/model/movie_details_args/movies_details_args.dart';
 import 'package:movies_app/data/model/movies_response/movies_response.dart';
+import 'package:movies_app/data/model/watch_list_data_model/watch_list_dm.dart';
 import 'package:movies_app/data/repos/category_screen_repo/categories_screen_data_source.dart';
 import 'package:movies_app/data/repos/category_screen_repo/categories_screen_repo.dart';
 import 'package:movies_app/ui/screens/category/category_screen_states.dart';
@@ -48,7 +50,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           bloc: categoriesScreenViewModel,
           builder: (context, state) {
             if (state is CategoriesSuccessState) {
-              return buildCategoriesWidget(state.list);
+              return buildCategoriesWidget(state.list, state.watchedMoviesList);
             } else if (state is CategoriesErrorState) {
               return errorView();
             } else {
@@ -60,13 +62,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
     );
   }
 
-  Widget buildCategoriesWidget(List<Result> list) {
+  Widget buildCategoriesWidget(
+      List<Result> list, List<WatchListDM> watchedMoviesList) {
     return ListView.builder(
       itemCount: list.length,
       itemBuilder: (context, index) => InkWell(
           onTap: () {
             Navigator.pushNamed(context, MovieDetails.routeName,
-                arguments: list[index].id);
+                arguments: MovieDetailsArgs(
+                    list[index].id.toString(), watchedMoviesList));
           },
           child: buildResultContent(list[index])),
     );

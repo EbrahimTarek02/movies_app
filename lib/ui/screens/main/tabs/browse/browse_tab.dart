@@ -72,12 +72,12 @@ class _BrowseTabState extends State<BrowseTab> {
               Navigator.pushNamed(context, CategoryScreen.routeName,
                   arguments: list[index]);
             },
-            child: buildCategoryWidget(context, list[index].name!)),
+            child: buildCategoryWidget(context, list[index].name!, index)),
       ),
     );
   }
 
-  Widget buildCategoryWidget(BuildContext context, String category) {
+  Widget buildCategoryWidget(BuildContext context, String category, int index) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
       child: Stack(
@@ -88,7 +88,9 @@ class _BrowseTabState extends State<BrowseTab> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                AppAssets.browseBg,
+                index > 18
+                    ? AppAssets.browseBg
+                    : browseTabViewModel.categoriesAssets[index],
                 fit: BoxFit.cover,
               ),
             ),

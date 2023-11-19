@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/data/model/movie_details_args/movies_details_args.dart';
+import 'package:movies_app/data/model/movies_response/movies_response.dart';
+import 'package:movies_app/data/model/watch_list_data_model/watch_list_dm.dart';
 import 'package:movies_app/ui/common/movie_poster_view.dart';
 import 'package:movies_app/ui/screens/movie_details/movie_details.dart';
 import 'package:movies_app/ui/util/app_colors.dart';
 
 class ListOfMoviesItemView extends StatelessWidget {
-  final List moviesList;
+  final List<Result> moviesList;
+  final List<WatchListDM> watchedMoviesList;
   final int index;
 
-  const ListOfMoviesItemView(this.moviesList, this.index, {super.key});
+  const ListOfMoviesItemView(
+      this.watchedMoviesList, this.moviesList, this.index,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, MovieDetails.routeName,
-            arguments: moviesList[index].id.toString());
+            arguments: MovieDetailsArgs(
+                moviesList[index].id.toString(), watchedMoviesList));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -33,7 +40,7 @@ class ListOfMoviesItemView extends StatelessWidget {
             children: [
               Expanded(
                 child:
-                    MoviePosterView(moviesList[index].posterPath ?? "", true),
+                    MoviePosterView(watchedMoviesList, moviesList[index], true),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, bottom: 4.0),
