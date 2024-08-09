@@ -8,9 +8,10 @@ class SearchRepo {
   SearchRepo(this.searchDataSource);
 
   Future<MoviesResponse> getResults(String query) async {
-    final connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.wifi ||
-        connectivityResult == ConnectivityResult.mobile) {
+    final List<ConnectivityResult> connectivityResult =
+    await (Connectivity().checkConnectivity());
+    if (connectivityResult.contains(ConnectivityResult.mobile) ||
+        connectivityResult.contains(ConnectivityResult.wifi)) {
       MoviesResponse response = await searchDataSource.getResults(query);
       return response;
     } else {
