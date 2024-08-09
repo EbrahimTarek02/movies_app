@@ -49,7 +49,7 @@ class _WatchListTabState extends State<WatchListTab> {
             if (state is WatchListTabISuccessState) {
               return buildWatchTab(state.watchedList);
             } else if (state is WatchListTabErrorState) {
-              return errorView();
+              return errorView("No movies found");
             } else {
               return loadingView();
             }
@@ -166,7 +166,7 @@ class _WatchListTabState extends State<WatchListTab> {
     );
   }
 
-  Widget errorView() {
+  Widget errorView(String error) {
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -175,8 +175,8 @@ class _WatchListTabState extends State<WatchListTab> {
           const SizedBox(
             height: 12,
           ),
-          const Text(
-            "No Categories found",
+           Text(
+            "$error",
             style: TextStyle(color: AppColors.white, fontSize: 13),
           ),
         ],

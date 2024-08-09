@@ -56,6 +56,9 @@ class _MovieDetailsState extends State<MovieDetails> {
                   child: Scaffold(
                       backgroundColor: AppColors.backgroundColor,
                       appBar: AppBar(
+                        iconTheme: IconThemeData(
+                          color: Colors.white, //change your color here
+                        ),
                         backgroundColor: AppColors.appBarBackgroundColor,
                         title: Text(
                           state.movieDetailsResponse.title ?? "Movie Title",
@@ -119,7 +122,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 20.0, right: 20.0, bottom: 20.0),
+                                        left: 20.0, right: 20.0, bottom: 10.0),
                                     child: Row(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -228,8 +231,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                                       ],
                                     ),
                                   ),
-                                  BlocBuilder<MovieDetailsViewModel,
-                                          MovieDetailsStates>(
+                                  BlocBuilder<MovieDetailsViewModel,MovieDetailsStates>(
                                       bloc: similarViewModel,
                                       builder: (context, moviesState) {
                                         if (moviesState
@@ -240,15 +242,12 @@ class _MovieDetailsState extends State<MovieDetails> {
                                         } else if (moviesState
                                             is MovieDetailsListSuccessState) {
                                           return Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.28,
+                                            height: MediaQuery.of(context).size.height * 0.28,
                                             color: AppColors.primary,
                                             padding: const EdgeInsets.only(
                                                 bottom: 13.0,
                                                 left: 22.0,
-                                                top: 10.0),
+                                                top: 8.0),
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.stretch,

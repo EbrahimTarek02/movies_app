@@ -39,7 +39,7 @@ class _HomeTabState extends State<HomeTab> {
       child: Column(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height * .34,
+            height: MediaQuery.of(context).size.height * .31,
             child: BlocBuilder<HomeTabViewModel, HomeTabStates>(
                 bloc: popularViewModel,
                 builder: (context, state) {
@@ -142,7 +142,7 @@ class _HomeTabState extends State<HomeTab> {
                 }),
           ),
           const SizedBox(
-            height: 20.0,
+            height: 10.0,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * .25,
@@ -159,7 +159,7 @@ class _HomeTabState extends State<HomeTab> {
                   return Container(
                     color: AppColors.primary,
                     padding: const EdgeInsets.only(
-                        top: 15.0, bottom: 13.0, left: 27.0),
+                        top: 15.0, bottom: 13.0, left: 15.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -193,7 +193,7 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
           const SizedBox(
-            height: 20.0,
+            height: 10.0,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * .27,
@@ -210,7 +210,7 @@ class _HomeTabState extends State<HomeTab> {
                   return Container(
                     color: AppColors.primary,
                     padding: const EdgeInsets.only(
-                        top: 8.0, bottom: 13.0, left: 27.0),
+                        top: 8.0, bottom: 13.0, left: 15.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [

@@ -40,9 +40,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: AppColors.white
+          ),
           elevation: 0,
           backgroundColor: Colors.transparent,
-          title: Text("${arg.name} Movies"),
+          title: Text("${arg.name} Movies",
+          style: TextStyle(
+            color: AppColors.white,
+          ),),
           centerTitle: true,
         ),
         backgroundColor: AppColors.backgroundColor,
