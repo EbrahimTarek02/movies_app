@@ -42,5 +42,6 @@ If you'd like to contribute to the Movies App project, please follow these guide
 ## Contact
 If you have any questions or feedback, please feel free to reach out to the project maintainers:
 - Ahmed Mohsen : ahmedmohsen2492@gmail.com
+- Ebrahim Tarek : ebrahimtarek2002@gmail.com
 
 
